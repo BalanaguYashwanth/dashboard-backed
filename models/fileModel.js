@@ -20,6 +20,6 @@ const fileSchema = new mongoose.Schema({
 })
 
 
-const patientFiles = mongoose.model('file', fileSchema);
+const PatientFiles = mongoose.model('file', fileSchema);
 
-module.exports = patientFiles;
+module.exports = PatientFiles;
