@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-app.get('/status', (req, res) => {
+app.get('/api-v2/status', (req, res) => {
   res.send({ 'status': 'healthy' })
 })
 
