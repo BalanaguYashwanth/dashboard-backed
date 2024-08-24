@@ -6,6 +6,8 @@ const cors = require('cors');
 const connectDb = require('./cofig/dbConnection');
 const routes  = require('./routes');
 const patient = require('./models/patientModels');
+const Disease = require('./models/diseaseModel');
+const patientFiles = require('./models/fileModel');
 require("dotenv").config();
 
 const app = express()
@@ -32,7 +34,15 @@ app.get('/status', (req, res) => {
 app.use('/', routes)
 
 patient.watch([], { fullDocument: 'updateLookup' }).on('change', (change) => {
-  io.emit('dataUpdated', change.fullDocument);
+  io.emit('dataUpdatedRecords', change.fullDocument);
+});
+
+Disease.watch([], { fullDocument: 'updateLookup' }).on('change', (change) => {
+  io.emit('dataUpdatedDisease', change.fullDocument);
+});
+
+patientFiles.watch([], { fullDocument: 'updateLookup' }).on('change', (change) => {
+  io.emit('dataUpdatedPatientFiles', change.fullDocument);
 });
 
 server.listen(PORT, () => {

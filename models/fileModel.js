@@ -5,10 +5,6 @@ const fileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    bucketId: {
-        type: String,
-        required: true
-    },
     files: [
         {
             name: {

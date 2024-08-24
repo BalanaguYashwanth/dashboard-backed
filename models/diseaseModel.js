@@ -4,9 +4,10 @@ const diseaseSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
 }, { timestamps: true });
 
-const disease = mongoose.model('disease', diseaseSchema);
+const Disease = mongoose.model('disease', diseaseSchema);
 
-module.exports = disease;
+module.exports = Disease;
