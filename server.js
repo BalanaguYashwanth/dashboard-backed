@@ -16,7 +16,10 @@ const io = new Server(server, {
   cors: {
       origin: '*',
       methods: ['GET', 'POST'],
-  }
+  },
+  path: '/socket.io',
+  transports: ['websocket', 'polling'], 
+  secure: true 
 });
 
 const PORT = 3001
