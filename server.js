@@ -34,7 +34,7 @@ app.get('/api-v2/status', (req, res) => {
   res.send({ 'status': 'healthy' })
 })
 
-app.use('/', routes)
+app.use('/api-v2', routes)
 
 patient.watch([], { fullDocument: 'updateLookup' }).on('change', (change) => {
   io.emit('dataUpdatedRecords', change.fullDocument);
